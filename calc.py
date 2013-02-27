@@ -60,11 +60,10 @@ Functions applications should be added in the exponent() method.
 The productions `factor ::= -number | - ( expr )`
 are quite tempting, however, they're wrong, because they change the
 associativity of the ^ operator. -2^2 = -4, not 4.
-To avoid this problem, the right places where productions to handle
-negative numbers must be placed is: 1. in fact2, the production ^
--fact1, and in exp1 `-fact1 fact2` should be added. The left recursive
-grammar, instead, requires only a new production exponent ::= -exponent.
+To avoid this problem we add the production
 
+EXPONENT ::= -EXPONENT (this is not left-recursive, since the rhs
+EXPONENT is not at the left of the production (there's a -).
 """
 
 class Tokenizer(object):
