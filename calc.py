@@ -1,10 +1,13 @@
 import re
 
-"""grammar, version 2
-expression :: = term + expression | term - expression | term
-term ::= exponent * term | exponent / term | exponent
-exponent ::= factor ^ exponent | factor ## | -exponent
-factor ::= number | ( expression )
+"""
+EXPRESSION :: = TERM + EXPRESSION | TERM - EXPRESSION | TERM
+TERM ::= EXPONENT * TERM | EXPONENT / TERM | EXPONENT
+EXPONENT ::= FACTOR ^ EXPONENT | FACTOR | -EXPONENT
+FACTOR ::= number | ( EXPRESSION )
+
+(using the convention that ALLCAPS means non-terminal, while `number`
+represents [0-9]+(?:.[0-9]+), so all the positive reals)
 
 This grammar generates all the string of valid arithmetic statement.
 Since it's right recursive, it's simpler to parse, by using a
